@@ -12,7 +12,7 @@
  communities. The Panzer Storage Gauge widget is an attractive dieselpunk VB6 widget for your desktop. 
  Functional and gorgeous at the same time. The graphics are my own, I took original inspiration from a clock face by Italo Fortana combining it with an aircraft gauge. It is all my code with some help from the chaps at VBForums (credits given). 
   
-The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage of all cores combined in a dieselpunk fashion on your desktop. This Widget is a moveable widget that you can move anywhere around the desktop as you require.
+The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage of a selected drive from your system in a dieselpunk fashion on your desktop. This Widget is a moveable widget that you can move anywhere around the desktop as you require.
 
  ![panzer-storagephoto-1000](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/f7f27729-f2cc-4935-8382-34d8da8dde88)
 
