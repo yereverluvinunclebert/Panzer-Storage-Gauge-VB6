@@ -6,22 +6,21 @@
 
  Why VB6? Well, with a 64 bit, modern-language improvement upgrade on the way with 100% compatible TwinBasic coupled with support for transparent PNGs via RC/Cairo, VB6 code has an amazing future.
 
-![vb6-logo-350](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/39e2c93f-40a5-4c47-8c23-d8ce7c747b10)
+![vb6-logo-350](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/00e1e934-2d1e-447a-a40f-519aa49d5ef1)
 
  I created as a variation of the previous gauges I had previously created for the World of Tanks and War Thunder 
  communities. The Panzer Storage Gauge widget is an attractive dieselpunk VB6 widget for your desktop. 
  Functional and gorgeous at the same time. The graphics are my own, I took original inspiration from a clock face by Italo Fortana combining it with an aircraft gauge. It is all my code with some help from the chaps at VBForums (credits given). 
   
 The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage of all cores combined in a dieselpunk fashion on your desktop. This Widget is a moveable widget that you can move anywhere around the desktop as you require.
- 
-![panzer-Storagephoto-1440x900](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/b9b4ef35-d007-48f7-9440-135a3f3ca092)
+
+ ![panzer-storagephoto-1000](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/f7f27729-f2cc-4935-8382-34d8da8dde88)
 
  This widget can be increased in size, animation speed can be changed, 
  opacity/transparency may be set as to the users discretion. The widget can 
  also be made to hide for a pre-determined period.
- 
-![widgetOnWhite](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/79a2877e-6b3f-485d-9ae9-0196154ae7b7)
 
+![icon](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/8f2ece67-6c27-428a-a5ed-c3ff57d3cd9f)
 
  Right clicking will bring up a menu of options. Double-clicking on the widget will cause a personalised Windows application to 
  fire up. The first time you run it there will be no assigned function and so it 
@@ -30,9 +29,8 @@ The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage o
  windows. Mouse hover over the widget and press CTRL+mousewheel up/down to resize. It works well on Windows XP 
  to Windows 11.
  
-![panzergauge-help](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/d5aeb2f6-307e-42de-ac9f-6238e0aa18ba)
+![tank-help-750](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/15e40483-341e-49c9-a1bb-7d8e934f218a)
 
- 
  The Panzer Storage Gauge VB6 gauge is Beta-grade software, under development, not yet 
  ready to use on a production system - use at your own risk.
 
@@ -126,10 +124,10 @@ The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage o
  o Microsoft VB6 IDE installed with its runtime components. The program runs 
  without any additional Microsoft OCX components, just the basic controls that 
  ship with VB6.  
- 
- ![vb6-logo-200](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/bf00fa3d-f1d4-417b-bc50-9446f2c3e674)
 
- 
+![vb6-logo-200](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/23f13e44-5d7d-4d94-af88-7bbe7de60a34)
+
+
  * Uses the latest version of the RC6 Cairo framework from Olaf Schmidt.
  
  During development the RC6 components need to be registered. These scripts are 
@@ -173,9 +171,8 @@ The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage o
  REGTLIB %SystemRoot%\System32\OLEGUIDS.TLB
  
  In the VB6 IDE - project - references - browse - select the OLEGuids.tlb
- 
-![prefs-about](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/2349098d-f7df-4084-885e-383a58b87bac)
 
+![about](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/5dd1683f-f323-4b4b-a8a2-82973a6d6ddb)
 
  * SETUP.EXE - The program is currently distributed using setup2go, a very useful 
  and comprehensive installer program that builds a .exe installer. Youll have to 
@@ -208,10 +205,10 @@ The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage o
  original artist using my name or one of my pseudonyms and a link to my site. 
  With regard to the commercial use of incorporated images, permission and a 
  licence would need to be obtained from the original owner and creator, ie. me.
- 
-![about](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/31fdceed-a7fe-4b50-afe1-9a0bb7cf60f8)
 
-![Panzer-Storage-Gauge-onDesktop](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/f2e06e77-77ee-46fb-840d-e14f96b4e0a5)
+![Panzer-CPU-Gauge-onDesktop](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/85c31cb9-30d8-45b4-b08d-5669edda740a)
+
+
 
 
 
