@@ -37,7 +37,7 @@ The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage o
  This version was developed on Windows 7 using 32 bit VisualBasic 6 as a FOSS 
  project creating a WoW64 widget for the desktop. 
  
-![Licence002](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/a24c5c45-5517-4423-938b-398f1d349d4c)
+![Licence002](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/507eaed1-4d72-4e54-943b-3343d443eb52)
 
  It is open source to allow easy configuration, bug-fixing, enhancement and 
  community contribution towards free-and-useful VB6 utilities that can be created
@@ -46,7 +46,7 @@ The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage o
  is new VB6 widgets with more functionality and then hopefully, conversion of 
  each to RADBasic/TwinBasic for future-proofing and 64bit-ness. 
 
-![menu01](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/45da67ae-8ec9-4730-a00d-e3c5a1db7519)
+![menu](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/14145e20-66bd-4441-9f7e-040832c9d876)
 
  This utility is one of a set of steampunk and dieselpunk widgets. That you can 
  find here on Deviantart: https://www.deviantart.com/yereverluvinuncleber/gallery
@@ -55,7 +55,8 @@ The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage o
  enhancements and contributions will be gratefully received if you choose to 
  contribute.
 
- ![security](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/41c785ea-43f9-4850-94f6-3cc5ab69d890)
+![security](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/b9be6695-96ef-40fe-9803-e305d92b406a)
+
 
  BUILD: The program runs without any Microsoft plugins.
  
