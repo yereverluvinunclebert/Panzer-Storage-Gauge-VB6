@@ -1,0 +1,87 @@
+DONE
+
+' conversion graphics PSD
+' project VBP renamed all contents
+' rename all files
+' tooltips, text all converted justclock, just clock, globe
+' unwanted time controls, code and variables removed from prefs
+' test cpu percent extraction using registry - failure
+' drive percent extraction using API
+' gauge digital displays
+' pointer rotation
+' lamps added and lit at low space
+' icons created and assigned to forms
+' sizing control corrected
+' help image
+' about image
+' menu text changed
+' new sampling control
+' colouring new control
+
+' about size reduced
+' byte overflow problem with large drives and VB6 double max storage
+' new drive control on prefs general tab
+' global drive var for saving, reading and validation
+' cwOverlay, removed all globals, replacing with properties
+' add calls to cwOverlay setting properties where required
+' about text
+' one page help form widened
+' about image customised and resized
+
+' -oOo-
+
+TODO
+
+' html help and images updated
+' chm help built
+
+' initial github synch.
+
+' readme.md created and updated with new images
+' test autostart
+
+' smooth pointer - flick/smooth
+' sampling interval vars - done
+' sampling interval var validation - done
+' sampling interval var reading/writing - done
+
+' add second monitor - wip find cable!
+
+' test usage of RC6 for monitor awareness - wip
+'      adjust Form Position on startup placing form onto Correct Monitor when placed off screen due to
+'               monitor/resolution changes.
+
+' https://www.vbforums.com/showthread.php?900892-VB6-Simple-way-to-make-your-VB6-application-quot-Per-Monitor-DPI-Aware-quot
+
+' adjustFormPositionToCorrectMonitor, make it work and observe the result as per FCW - wip
+' adjustFormPositionToCorrectMonitor - prefs form
+' adjustFormPositionToCorrectMonitor - licence form
+' adjustFormPositionToCorrectMonitor - about form
+' adjustFormPositionToCorrectMonitor - help form
+
+' setup2go create setup.exe
+
+' -oOo-
+
+' Later tasks after testing
+
+' test the icon sizes on 32bit Win7, XP and ReactOS, find out if 48x48 causes a crash
+' 32x32 (24 bit)
+' 16x16 (24 bit)
+' 48x48 (32 bit)
+' 32x32 (32 bit)
+' 16x16 (32 bit)
+
+' test on ReactOS
+
+' patch a 256 bit icon into the VB6 binary
+' https://www.vbforums.com/showthread.php?858347-RESOLVED-How-to-create-and-connect-quality-icon-group-to-your-VB6-app
+
+' RC BUGS & LIMITATIONS
+' =====================
+
+' tooltips also resize when the whole thing is resized, code received from Olaf tested - resizing results in missing text and blank tooltips, using non-standard font centurion light
+' RC6 needs a static tooltip option.
+
+
+
