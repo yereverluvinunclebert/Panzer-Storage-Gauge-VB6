@@ -1,26 +1,26 @@
-# Panzer-CPU-Gauge-VB6
+# Panzer-Storage-Gauge-VB6
  
-  A FOSS CPU Gauge VB6 WoW64 Widget for Reactos, XP, Win7, 8 and 10/11+.
+  A FOSS Storage Gauge VB6 WoW64 Widget for Reactos, XP, Win7, 8 and 10/11+.
  
- My current VB6/RC6 PSD program being finished now, fundamentally complete, only awaiting addition of smooth rotation to the CPU pointer, the handling of the sampling interval, fixing the enabling of the glowing lamps, testing on Windows XP and Win7 32bit and some multi monitor checking, completion of the CHM help file and the creation of the setup.exe. I am working on integrating my native VB6 forms from other programs and code alongside the RC6 Cairo code. This Panzer widget is based upon the Yahoo widget of the same visual design and very similar operation.
+ My current VB6/RC6 PSD program being finished now, fundamentally complete, only awaiting addition of smooth rotation to the Storage pointer, testing on Windows XP and Win7 32bit and some multi monitor checking, completion of the CHM help file and the creation of the setup.exe. I am working on integrating my native VB6 forms from other programs and code alongside the RC6 Cairo code. This Panzer widget is based upon the Yahoo widget of the same visual design and very similar operation.
 
  Why VB6? Well, with a 64 bit, modern-language improvement upgrade on the way with 100% compatible TwinBasic coupled with support for transparent PNGs via RC/Cairo, VB6 code has an amazing future.
 
-![vb6-logo-350](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/39e2c93f-40a5-4c47-8c23-d8ce7c747b10)
+![vb6-logo-350](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/39e2c93f-40a5-4c47-8c23-d8ce7c747b10)
 
  I created as a variation of the previous gauges I had previously created for the World of Tanks and War Thunder 
- communities. The Panzer CPU Gauge widget is an attractive dieselpunk VB6 widget for your desktop. 
+ communities. The Panzer Storage Gauge widget is an attractive dieselpunk VB6 widget for your desktop. 
  Functional and gorgeous at the same time. The graphics are my own, I took original inspiration from a clock face by Italo Fortana combining it with an aircraft gauge. It is all my code with some help from the chaps at VBForums (credits given). 
   
-The Panzer CPU Gauge VB6  is a useful utility displaying the CPU usage of all cores combined in a dieselpunk fashion on your desktop. This Widget is a moveable widget that you can move anywhere around the desktop as you require.
+The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage of all cores combined in a dieselpunk fashion on your desktop. This Widget is a moveable widget that you can move anywhere around the desktop as you require.
  
-![panzer-cpuphoto-1440x900](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/b9b4ef35-d007-48f7-9440-135a3f3ca092)
+![panzer-Storagephoto-1440x900](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/b9b4ef35-d007-48f7-9440-135a3f3ca092)
 
  This widget can be increased in size, animation speed can be changed, 
  opacity/transparency may be set as to the users discretion. The widget can 
  also be made to hide for a pre-determined period.
  
-![widgetOnWhite](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/79a2877e-6b3f-485d-9ae9-0196154ae7b7)
+![widgetOnWhite](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/79a2877e-6b3f-485d-9ae9-0196154ae7b7)
 
 
  Right clicking will bring up a menu of options. Double-clicking on the widget will cause a personalised Windows application to 
@@ -30,16 +30,16 @@ The Panzer CPU Gauge VB6  is a useful utility displaying the CPU usage of all co
  windows. Mouse hover over the widget and press CTRL+mousewheel up/down to resize. It works well on Windows XP 
  to Windows 11.
  
-![panzergauge-help](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/d5aeb2f6-307e-42de-ac9f-6238e0aa18ba)
+![panzergauge-help](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/d5aeb2f6-307e-42de-ac9f-6238e0aa18ba)
 
  
- The Panzer CPU Gauge VB6 gauge is Beta-grade software, under development, not yet 
+ The Panzer Storage Gauge VB6 gauge is Beta-grade software, under development, not yet 
  ready to use on a production system - use at your own risk.
 
  This version was developed on Windows 7 using 32 bit VisualBasic 6 as a FOSS 
  project creating a WoW64 widget for the desktop. 
  
-![Licence002](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/a24c5c45-5517-4423-938b-398f1d349d4c)
+![Licence002](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/a24c5c45-5517-4423-938b-398f1d349d4c)
 
  It is open source to allow easy configuration, bug-fixing, enhancement and 
  community contribution towards free-and-useful VB6 utilities that can be created
@@ -48,7 +48,7 @@ The Panzer CPU Gauge VB6  is a useful utility displaying the CPU usage of all co
  is new VB6 widgets with more functionality and then hopefully, conversion of 
  each to RADBasic/TwinBasic for future-proofing and 64bit-ness. 
 
-![menu01](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/45da67ae-8ec9-4730-a00d-e3c5a1db7519)
+![menu01](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/45da67ae-8ec9-4730-a00d-e3c5a1db7519)
 
  This utility is one of a set of steampunk and dieselpunk widgets. That you can 
  find here on Deviantart: https://www.deviantart.com/yereverluvinuncleber/gallery
@@ -57,7 +57,7 @@ The Panzer CPU Gauge VB6  is a useful utility displaying the CPU usage of all co
  enhancements and contributions will be gratefully received if you choose to 
  contribute.
 
- ![security](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/41c785ea-43f9-4850-94f6-3cc5ab69d890)
+ ![security](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/41c785ea-43f9-4850-94f6-3cc5ab69d890)
 
  BUILD: The program runs without any Microsoft plugins.
  
@@ -127,7 +127,7 @@ The Panzer CPU Gauge VB6  is a useful utility displaying the CPU usage of all co
  without any additional Microsoft OCX components, just the basic controls that 
  ship with VB6.  
  
- ![vb6-logo-200](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/bf00fa3d-f1d4-417b-bc50-9446f2c3e674)
+ ![vb6-logo-200](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/bf00fa3d-f1d4-417b-bc50-9446f2c3e674)
 
  
  * Uses the latest version of the RC6 Cairo framework from Olaf Schmidt.
@@ -142,9 +142,9 @@ The Panzer CPU Gauge VB6  is a useful utility displaying the CPU usage of all co
  referenced using modRC6regfree.bas which is compiled into the binary.	
  
  
- Requires a PzCPU Gauge folder in C:\Users\<user>\AppData\Roaming\ 
- eg: C:\Users\<user>\AppData\Roaming\PzCPU Gauge
- Requires a settings.ini file to exist in C:\Users\<user>\AppData\Roaming\PzCPU Gauge
+ Requires a PzStorage Gauge folder in C:\Users\<user>\AppData\Roaming\ 
+ eg: C:\Users\<user>\AppData\Roaming\PzStorage Gauge
+ Requires a settings.ini file to exist in C:\Users\<user>\AppData\Roaming\PzStorage Gauge
  The above will be created automatically by the compiled program when run for the 
  first time.
  
@@ -155,7 +155,7 @@ The Panzer CPU Gauge VB6  is a useful utility displaying the CPU usage of all co
  * CCRSlider.ocx
  
  This OCX will reside in the program folder. The program reference to this OCX is 
- contained within the supplied resource file Panzer CPU Gauge Gauge.RES. It is 
+ contained within the supplied resource file Panzer Storage Gauge Gauge.RES. It is 
  compiled into the binary.
  
  * OLEGuids.tlb
@@ -174,13 +174,13 @@ The Panzer CPU Gauge VB6  is a useful utility displaying the CPU usage of all co
  
  In the VB6 IDE - project - references - browse - select the OLEGuids.tlb
  
-![prefs-about](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/2349098d-f7df-4084-885e-383a58b87bac)
+![prefs-about](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/2349098d-f7df-4084-885e-383a58b87bac)
 
 
  * SETUP.EXE - The program is currently distributed using setup2go, a very useful 
  and comprehensive installer program that builds a .exe installer. Youll have to 
  find a copy of setup2go on the web as it is now abandonware. Contact me
- directly for a copy. The file "install PzCPU Gauge 0.1.0.s2g" is the configuration 
+ directly for a copy. The file "install PzStorage Gauge 0.1.0.s2g" is the configuration 
  file for setup2go. When you build it will report any errors in the build.
  
  * HELP.CHM - the program documentation is built using the NVU HTML editor and 
@@ -209,9 +209,9 @@ The Panzer CPU Gauge VB6  is a useful utility displaying the CPU usage of all co
  With regard to the commercial use of incorporated images, permission and a 
  licence would need to be obtained from the original owner and creator, ie. me.
  
-![about](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/31fdceed-a7fe-4b50-afe1-9a0bb7cf60f8)
+![about](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/31fdceed-a7fe-4b50-afe1-9a0bb7cf60f8)
 
-![Panzer-CPU-Gauge-onDesktop](https://github.com/yereverluvinunclebert/Panzer-CPU-Gauge-VB6/assets/2788342/f2e06e77-77ee-46fb-840d-e14f96b4e0a5)
+![Panzer-Storage-Gauge-onDesktop](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/f2e06e77-77ee-46fb-840d-e14f96b4e0a5)
 
 
 
