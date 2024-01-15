@@ -440,8 +440,8 @@ Public msgBoxADynamicSizingFlg As Boolean
 
 Private Declare Function GetLogicalDriveStrings Lib "kernel32" Alias "GetLogicalDriveStringsA" (ByVal nBufferLength As Long, ByVal lpBuffer As String) As Long
 
-Public driveArray(50) As String
-Public driveCount As Integer
+Public gblDriveArray(50) As String
+Public gblDriveCount As Integer
 'Public currentDrive As String
 
 '---------------------------------------------------------------------------------------
@@ -2772,9 +2772,9 @@ Public Function ArrayString(ParamArray tokens()) As String()
     On Error GoTo ArrayString_Error
 
     ReDim Arr(UBound(tokens)) As String
-    Dim i As Long
-    For i = 0 To UBound(tokens)
-        Arr(i) = tokens(i)
+    Dim I As Long
+    For I = 0 To UBound(tokens)
+        Arr(I) = tokens(I)
     Next
     ArrayString = Arr
 
@@ -2790,7 +2790,7 @@ End Function
 
 
 ' ----------------------------------------------------------------
-' Procedure Name: getDriveArray
+' Procedure Name: getgblDriveArray
 ' Purpose: Obtains the names of all the drives from the system, maximum 50
 ' Procedure Kind: sub
 ' Procedure Access: Public
@@ -2798,13 +2798,13 @@ End Function
 ' Author: beededea
 ' Date: 13/01/2024
 ' ----------------------------------------------------------------
-Public Sub getDriveArray(ByRef thisArray() As String, ByRef driveCount As Integer)
+Public Sub getgblDriveArray(ByRef thisArray() As String, ByRef gblDriveCount As Integer)
     Dim sBuffer             As String
     Dim lLength             As Long: lLength = 0
     Dim lReturn             As Long: lReturn = 0
     Dim driveLoop             As Long: driveLoop = 0
      
-    On Error GoTo getDriveArray_Error
+    On Error GoTo getgblDriveArray_Error
     
     lLength = 255
     sBuffer = Space$(lLength)
@@ -2822,14 +2822,14 @@ Public Sub getDriveArray(ByRef thisArray() As String, ByRef driveCount As Intege
         Next driveLoop
     End If
     
-    driveCount = driveLoop + 1
+    gblDriveCount = driveLoop + 1
         
     On Error GoTo 0
     Exit Sub
 
-getDriveArray_Error:
+getgblDriveArray_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure getDriveArray, line " & Erl & "."
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure getgblDriveArray, line " & Erl & "."
 
 End Sub
 

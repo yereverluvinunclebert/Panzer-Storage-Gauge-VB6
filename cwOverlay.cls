@@ -51,6 +51,7 @@ Private mTicking As Boolean ' property Ticking
 Private mSmoothSecondHand As Boolean ' property SmoothSecondHand
 Private mLocked As Boolean ' property Locked
 Private mHidden As Boolean ' property Hidden
+Private mThisDriveNo As Integer ' property thisDriveNo
 Private mThisDrive As String ' property thisDrive
 Private mThisOpacity As String ' property ThisOpacity
 Private mSamplingInterval As String ' property SamplingInterval
@@ -309,6 +310,51 @@ End Property
 
 
 '---------------------------------------------------------------------------------------
+' Property : thisDrive
+' Author    : beededea
+' Date      : 17/05/2023
+' Purpose   :
+'---------------------------------------------------------------------------------------
+'
+Public Property Get thisDriveNo() As Integer
+   On Error GoTo thisDriveNoGet_Error
+
+    thisDriveNo = mThisDriveNo
+
+   On Error GoTo 0
+   Exit Property
+
+thisDriveNoGet_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property thisDriveNo of Class Module cwOverlay"
+End Property
+'---------------------------------------------------------------------------------------
+' Property  : thisDriveNo
+' Author    :
+' Date      : 09/05/2023
+' Purpose   :
+'---------------------------------------------------------------------------------------
+'
+Public Property Let thisDriveNo(ByVal newValue As Integer)
+    On Error GoTo thisDriveNoLet_Error
+
+    If mThisDriveNo <> newValue Then mThisDriveNo = newValue Else Exit Property
+            
+    'given a drive number select the drive string
+    If mThisDriveNo <= gblDriveCount Then
+        mThisDrive = gblDriveArray(mThisDriveNo)
+    End If
+    
+    Call obtainStorage
+    
+    On Error GoTo 0
+    Exit Property
+
+thisDriveNoLet_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property thisDriveNo of Class Module cwOverlay"
+End Property
+'---------------------------------------------------------------------------------------
 ' Property : samplingInterval
 ' Author    : beededea
 ' Date      : 17/05/2023
@@ -474,8 +520,9 @@ Private Sub W_Paint(CC As RC6.cCairoContext, ByVal xAbs As Single, ByVal yAbs As
     Dim txtStoragePercent As String: txtStoragePercent = vbNullString
     Dim textDrawn As Boolean:   textDrawn = False
     Dim someOpacity As Double: someOpacity = 0
+    Dim cream As String: cream = vbNullString
     
-    Const cream As String = "&HFFF5F5F5"
+    cream = RGB(235, 217, 179) ' cannot create a constant from an RGB value
    
     On Error GoTo W_Paint_Error
     
@@ -525,8 +572,8 @@ Private Sub W_Paint(CC As RC6.cCairoContext, ByVal xAbs As Single, ByVal yAbs As
                     W.Refresh
                     
                     ' draw the drive data in the two black windows
-                    CC.DrawText 265, 103, 200, 200, txtStoragePercent, , , 2, True, , someOpacity
-                    CC.DrawText 455, 297, 200, 200, txtStorageFree, , , 2, True, , someOpacity
+                    CC.DrawText 267, 105, 200, 200, txtStoragePercent, , , 2, True, , someOpacity
+                    CC.DrawText 453, 298, 200, 200, txtStorageFree, , , 2, True, , someOpacity
                     textDrawn = True
                     
                     Set Pat.Matrix = Pat.Matrix.TranslateCoords(11, 246) 'shift to the "rotation-point" within the Pattern
@@ -612,9 +659,13 @@ End Sub
 Private Sub obtainStorage()
 
     On Error GoTo obtainStorage_Error
-        storagePercent = Storage_Usage_Percent
-        storageFree = Storage_Usage_Free
-        SDeg = (storagePercent * 3) + 30
+    
+    storagePercent = Storage_Usage_Percent
+    storageFree = Storage_Usage_Free
+    SDeg = (storagePercent * 3) + 30
+        
+    W.Refresh
+    
     On Error GoTo 0
     Exit Sub
 
