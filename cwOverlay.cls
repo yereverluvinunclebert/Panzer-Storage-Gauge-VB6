@@ -341,7 +341,7 @@ Public Property Let thisDriveNo(ByVal newValue As Integer)
     If mThisDriveNo <> newValue Then mThisDriveNo = newValue Else Exit Property
             
     'given a drive number select the drive string
-    If mThisDriveNo <= gblDriveCount Then
+    If mThisDriveNo < gblDriveCount Then
         mThisDrive = gblDriveArray(mThisDriveNo)
     End If
     

@@ -71,6 +71,12 @@ Begin VB.Form menuForm
       Begin VB.Menu menuReload 
          Caption         =   "Reload Widget (F5)"
       End
+      Begin VB.Menu menuSpawn 
+         Caption         =   "Spawn New Instance of this Widget"
+      End
+      Begin VB.Menu blank9 
+         Caption         =   ""
+      End
       Begin VB.Menu mnuEditWidget 
          Caption         =   "Edit Widget using..."
       End
@@ -161,6 +167,35 @@ End Sub
       
 
 
+
+' ----------------------------------------------------------------
+' Procedure Name: menuSpawn_Click
+' Purpose:
+' Procedure Kind: Sub
+' Procedure Access: Private
+' Author: beededea
+' Date: 15/01/2024
+' ----------------------------------------------------------------
+Private Sub menuSpawn_Click()
+    On Error GoTo menuSpawn_Click_Error
+    Dim thisCommand As String: thisCommand = vbNullString
+
+    thisCommand = App.path & "\" & App.EXEName & ".exe"
+    
+    If fFExists(thisCommand) Then
+        Call Shell(thisCommand, vbNormalFocus)
+    Else
+        MsgBox "Having a bit of a problem opening the path for this widget - " & thisCommand & " It doesn't seem to exist or is inaccessible."
+    End If
+    
+    On Error GoTo 0
+    Exit Sub
+
+menuSpawn_Click_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure menuSpawn_Click, line " & Erl & "."
+
+End Sub
 
 '---------------------------------------------------------------------------------------
 ' Procedure : mnuAppFolder_Click

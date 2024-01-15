@@ -348,7 +348,7 @@ End Sub
 ' Procedure : switchfacesbutton_mouseUp
 ' Author    : beededea
 ' Date      : 03/08/2023
-' Purpose   :
+' Purpose   : increment the drive number
 '---------------------------------------------------------------------------------------
 '
 Private Sub switchfacesbutton_mouseUp(ByRef Sender As Object)
@@ -362,7 +362,7 @@ Private Sub switchfacesbutton_mouseUp(ByRef Sender As Object)
     
     currDriveNo = overlayWidget.thisDriveNo
     currDriveNo = currDriveNo + 1
-    If currDriveNo >= gblDriveCount Then currDriveNo = 0
+    If currDriveNo >= gblDriveCount - 1 Then currDriveNo = 0
     overlayWidget.thisDriveNo = currDriveNo
         
     fileToPlay = "till.wav"
