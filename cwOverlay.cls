@@ -177,7 +177,7 @@ Public Property Let Ticking(ByVal newValue As Boolean)
 TickingLet_Error:
 
     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property Ticking of Class Module cwOverlay"
-End Property ' the earth Ticking flag
+End Property
 
 '---------------------------------------------------------------------------------------
 ' Property : SmoothSecondHand

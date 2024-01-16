@@ -152,7 +152,7 @@ Private Sub gaugeForm_BubblingEvent(ByRef Sender As Object, ByRef EventName As S
                 If PzGEnableBalloonTooltips = "1" Then CreateToolTip gaugeForm.hwnd, "Click here to toggle the tick type from once per second to a more fluid, continuous movement.", _
                      TTIconInfo, widgetName & " Tick Button Help", , , , True
             Case "housing/switchfacesbutton"
-                If PzGEnableBalloonTooltips = "1" Then CreateToolTip gaugeForm.hwnd, "This button is not allocated a function in this particular widget.", _
+                If PzGEnableBalloonTooltips = "1" Then CreateToolTip gaugeForm.hwnd, "This button selects the next drive in the drive list.", _
                      TTIconInfo, widgetName & " Switch Faces Button Help", , , , True
             Case "housing/stopbutton"
                 If PzGEnableBalloonTooltips = "1" Then CreateToolTip gaugeForm.hwnd, "This button stops all animated clock functions for this widget, hand movements &c .", _
