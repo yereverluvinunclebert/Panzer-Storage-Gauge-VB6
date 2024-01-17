@@ -660,6 +660,9 @@ Private Sub obtainStorage()
 
     On Error GoTo obtainStorage_Error
     
+    ' get the list of drives and the count
+    Call getgblDriveArray(gblDriveArray(), gblDriveCount)
+
     storagePercent = Storage_Usage_Percent
     storageFree = Storage_Usage_Free
     SDeg = (storagePercent * 3) + 30
