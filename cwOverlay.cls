@@ -33,7 +33,7 @@ Private Declare Function GetDiskFreeSpace _
         As Long
                 
 Private storagePercent As Long
-Private storageFree As Long
+Private storageFree As Double
 
 'these Public Properties are set in the Parent (here, cfAlpha)
 Public cCollOverlayImages As cCollection
@@ -708,7 +708,7 @@ End Function
 ' Author: https://www.tek-tips.com/userinfo.cfm?member=Hypetia
 ' Date: 09/01/2024
 ' ----------------------------------------------------------------
-Private Function Storage_Usage_Free() As Long
+Private Function Storage_Usage_Free() As Double
 
     Storage_Usage_Free = getDriveFree(mThisDrive)
       
@@ -752,7 +752,10 @@ Private Function getDrivePercent(ByVal sRootDrive As String) As Long
     dTotalBytes = CDbl(lBytesPerSec * CDbl(lSecPerClust * (lTotalClusters / 10000)))
                         
     ' Get Free Disk Space
-    dFreeBytes = lBytesPerSec * CDbl(lSecPerClust * lFreeClusters / 10000)
+    
+    Dim a As Double
+    a = CDbl(lSecPerClust) * CDbl(lFreeClusters)
+    dFreeBytes = CDbl(lBytesPerSec * a / 10000)
                             
     ' Get Used Disk Space
     dUsedBytes = dTotalBytes - dFreeBytes
@@ -782,7 +785,7 @@ End Function
 ' Author: beededea
 ' Date: 12/01/2024
 ' ----------------------------------------------------------------
-Private Function getDriveFree(ByVal sRootDrive As String) As Long
+Private Function getDriveFree(ByVal sRootDrive As String) As Double
     On Error GoTo getDriveFree_Error
     Dim lSecPerClust        As Long
     Dim lBytesPerSec        As Long
@@ -795,7 +798,7 @@ Private Function getDriveFree(ByVal sRootDrive As String) As Long
     Call GetDiskFreeSpace(sRootDrive, lSecPerClust, lBytesPerSec, lFreeClusters, lTotalClusters)
                                                 
     ' Get Free Disk Space
-    dFreeGig = lBytesPerSec * CDbl(lSecPerClust * lFreeClusters)
+    dFreeGig = CDbl(lBytesPerSec) * CDbl(lSecPerClust) * CDbl(lFreeClusters)
     dFreeGig = dFreeGig / 1024 ' KB
     dFreeGig = dFreeGig / 1024 ' MB
     dFreeGig = dFreeGig / 1024 ' GB
