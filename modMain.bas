@@ -231,7 +231,7 @@ Private Sub initialiseGlobalVars()
     ' general
     PzGStartup = vbNullString
     PzGGaugeFunctions = vbNullString
-    PzGSmoothSecondHand = vbNullString
+    PzGPointerAnimate = vbNullString
     PzGSamplingInterval = vbNullString
     PzGCurrentDrive = vbNullString
 
@@ -495,11 +495,11 @@ Public Sub adjustMainControls()
 
     End With
     
-    If PzGSmoothSecondHand = "0" Then
-        overlayWidget.SmoothSecondHand = False
+    If PzGPointerAnimate = "0" Then
+        overlayWidget.pointerAnimate = False
         fAlpha.gaugeForm.Widgets("housing/tickbutton").Widget.Alpha = Val(PzGOpacity) / 100
     Else
-        overlayWidget.SmoothSecondHand = True
+        overlayWidget.pointerAnimate = True
         fAlpha.gaugeForm.Widgets("housing/tickbutton").Widget.Alpha = 0
     End If
     
@@ -581,7 +581,7 @@ Public Sub readSettingsFile(ByVal location As String, ByVal PzGSettingsFile As S
         ' general
         PzGStartup = fGetINISetting(location, "startup", PzGSettingsFile)
         PzGGaugeFunctions = fGetINISetting(location, "gaugeFunctions", PzGSettingsFile)
-        PzGSmoothSecondHand = fGetINISetting(location, "smoothSecondHand", PzGSettingsFile)
+        PzGPointerAnimate = fGetINISetting(location, "PointerAnimate", PzGSettingsFile)
         PzGSamplingInterval = fGetINISetting(location, "samplingInterval", PzGSettingsFile)
         PzGCurrentDrive = fGetINISetting(location, "currentDrive", PzGSettingsFile)
         
@@ -687,7 +687,7 @@ Public Sub validateInputs()
         If PzGGaugeFunctions = vbNullString Then PzGGaugeFunctions = "1" ' always turn
 '        If PzGAnimationInterval = vbNullString Then PzGAnimationInterval = "130"
         If PzGStartup = vbNullString Then PzGStartup = "1"
-        If PzGSmoothSecondHand = vbNullString Then PzGSmoothSecondHand = "0"
+        If PzGPointerAnimate = vbNullString Then PzGPointerAnimate = "0"
         If PzGSamplingInterval = vbNullString Then PzGSamplingInterval = "3"
         
         If PzGCurrentDrive = vbNullString Then PzGCurrentDrive = "C:\"

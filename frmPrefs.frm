@@ -3248,7 +3248,7 @@ Private Sub btnSave_Click()
 '    PzGMainGaugeTimeZone = cmbMainGaugeTimeZone.ListIndex
 '    PzGMainDaylightSaving = cmbMainDaylightSaving.ListIndex
     
-    PzGSmoothSecondHand = cmbTickSwitchPref.ListIndex
+    PzGPointerAnimate = cmbTickSwitchPref.ListIndex
     PzGCurrentDrive = cmbCurrentDrive.List(cmbCurrentDrive.ListIndex)
     
     PzGSamplingInterval = LTrim$(Str$(sliSamplingInterval.Value))
@@ -3326,7 +3326,7 @@ Private Sub btnSave_Click()
         sPutINISetting "Software\PzStorageGauge", "scrollWheelDirection", PzGScrollWheelDirection, PzGSettingsFile
                 
         sPutINISetting "Software\PzStorageGauge", "gaugeFunctions", PzGGaugeFunctions, PzGSettingsFile
-        sPutINISetting "Software\PzStorageGauge", "smoothSecondHand", PzGSmoothSecondHand, PzGSettingsFile
+        sPutINISetting "Software\PzStorageGauge", "PointerAnimate", PzGPointerAnimate, PzGSettingsFile
         sPutINISetting "Software\PzStorageGauge", "samplingInterval", PzGSamplingInterval, PzGSettingsFile
         
         sPutINISetting "Software\PzStorageGauge", "currentDrive", PzGCurrentDrive, PzGSettingsFile
@@ -3559,7 +3559,7 @@ Private Sub adjustPrefsControls()
     chkGaugeFunctions.Value = Val(PzGGaugeFunctions)
     chkGenStartup.Value = Val(PzGStartup)
 
-    cmbTickSwitchPref.ListIndex = Val(PzGSmoothSecondHand)
+    cmbTickSwitchPref.ListIndex = Val(PzGPointerAnimate)
     
     ' prefs combo matches stored current drive
     For I = 0 To cmbCurrentDrive.ListCount - 1

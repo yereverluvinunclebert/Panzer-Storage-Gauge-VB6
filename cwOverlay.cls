@@ -42,13 +42,23 @@ Public cyPerc As Single
 
 Private WithEvents W As cWidgetBase
 Attribute W.VB_VarHelpID = -1
-Private WithEvents tmrClock As cTimer
-Attribute tmrClock.VB_VarHelpID = -1
+Private WithEvents tmrSampler As cTimer
+Attribute tmrSampler.VB_VarHelpID = -1
+Private WithEvents tmrAnimator As cTimer
+Attribute tmrAnimator.VB_VarHelpID = -1
+
+Private oldSDeg As Double
+Private newSDeg As Double
+Private animationQuanta As Double
+Private animationAmount As Double
+Private animationDivisions As Integer
+Private animationInterval As Integer
+Private animateCCW As Boolean
 
 Private SDeg As Double
 
 Private mTicking As Boolean ' property Ticking
-Private mSmoothSecondHand As Boolean ' property SmoothSecondHand
+Private mPointerAnimate As Boolean ' property PointerAnimate
 Private mLocked As Boolean ' property Locked
 Private mHidden As Boolean ' property Hidden
 Private mThisDriveNo As Integer ' property thisDriveNo
@@ -74,11 +84,15 @@ Private Sub Class_Initialize()
         W.BackColor = -1  'we don't use any BackColor here, transparent
         W.ImplementsHitTest = True 'when at False, no HitTest-Event would be triggered
                     
-    intervalValue = 5000
-
-    Set tmrClock = Nothing
-    Set tmrClock = New_c.Timer(100, mTicking)
-
+    Set tmrSampler = Nothing
+    Set tmrSampler = New_c.Timer(100, mTicking) ' first interval is 1/10th of a second, don't change it, triggers an immediate run. Correct sampling interval read later
+    
+    animationDivisions = 12
+    animationInterval = 40
+    
+    Set tmrAnimator = Nothing
+    Set tmrAnimator = New_c.Timer(animationInterval, False)
+    
    On Error GoTo 0
    Exit Sub
 
@@ -160,15 +174,15 @@ Public Property Let Ticking(ByVal newValue As Boolean)
     If mTicking <> newValue Then mTicking = newValue Else Exit Property
     
     If mTicking Then
-'        If mSmoothSecondHand Then
+'        If mPointerAnimate Then
 '            'intervalValue = 100
 '        Else
 '            'intervalValue = 500
 '        End If
 
-        tmrClock.Enabled = True
+        tmrSampler.Enabled = True
     Else
-        tmrClock.Enabled = False
+        tmrSampler.Enabled = False
     End If
 
    On Error GoTo 0
@@ -179,53 +193,6 @@ TickingLet_Error:
     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property Ticking of Class Module cwOverlay"
 End Property
 
-'---------------------------------------------------------------------------------------
-' Property : SmoothSecondHand
-' Author    : beededea
-' Date      : 17/05/2023
-' Purpose   :
-'---------------------------------------------------------------------------------------
-'
-Public Property Get SmoothSecondHand() As Boolean
-   On Error GoTo SmoothSecondHandGet_Error
-
-    SmoothSecondHand = mSmoothSecondHand
-
-   On Error GoTo 0
-   Exit Property
-
-SmoothSecondHandGet_Error:
-
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property SmoothSecondHand of Class Module cwOverlay"
-End Property
-'---------------------------------------------------------------------------------------
-' Property  : SmoothSecondHand
-' Author    :
-' Date      : 09/05/2023
-' Purpose   :
-'---------------------------------------------------------------------------------------
-'
-Public Property Let SmoothSecondHand(ByVal newValue As Boolean)
-    Dim intervalValue As Integer: intervalValue = 0
-    On Error GoTo SmoothSecondHandLet_Error
-
-    If mSmoothSecondHand <> newValue Then mSmoothSecondHand = newValue Else Exit Property
-    
-    If mSmoothSecondHand Then
-        intervalValue = 100
-    Else
-        intervalValue = 500
-    End If
-            
-    tmrClock.Interval = intervalValue
-    
-   On Error GoTo 0
-   Exit Property
-
-SmoothSecondHandLet_Error:
-
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property SmoothSecondHand of Class Module cwOverlay"
-End Property
 
 '---------------------------------------------------------------------------------------
 ' Property : thisOpacity
@@ -298,6 +265,8 @@ Public Property Let thisDrive(ByVal newValue As String)
 
     If mThisDrive <> newValue Then mThisDrive = newValue Else Exit Property
     
+    ' get the list of drives and the count
+    Call getgblDriveArray(gblDriveArray(), gblDriveCount)
     Call obtainStorage
     
     On Error GoTo 0
@@ -345,6 +314,8 @@ Public Property Let thisDriveNo(ByVal newValue As Integer)
         mThisDrive = gblDriveArray(mThisDriveNo)
     End If
     
+    ' get the list of drives and the count
+    Call getgblDriveArray(gblDriveArray(), gblDriveCount)
     Call obtainStorage
     
     On Error GoTo 0
@@ -354,6 +325,45 @@ thisDriveNoLet_Error:
 
     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property thisDriveNo of Class Module cwOverlay"
 End Property
+
+'---------------------------------------------------------------------------------------
+' Property : pointerAnimate
+' Author    : beededea
+' Date      : 17/05/2023
+' Purpose   :
+'---------------------------------------------------------------------------------------
+'
+Public Property Get pointerAnimate() As Boolean
+   On Error GoTo pointerAnimateGet_Error
+
+    pointerAnimate = mPointerAnimate
+
+   On Error GoTo 0
+   Exit Property
+
+pointerAnimateGet_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property pointerAnimate of Class Module cwOverlay"
+End Property
+'---------------------------------------------------------------------------------------
+' Property  : PointerAnimate
+' Author    :
+' Date      : 09/05/2023
+' Purpose   :
+'---------------------------------------------------------------------------------------
+'
+Public Property Let pointerAnimate(ByVal newValue As Boolean)
+    On Error GoTo pointerAnimateLet_Error
+
+    If mPointerAnimate <> newValue Then mPointerAnimate = newValue Else Exit Property
+        
+   On Error GoTo 0
+   Exit Property
+
+pointerAnimateLet_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property pointerAnimate of Class Module cwOverlay"
+End Property ' the gauge pointerAnimate flag
 '---------------------------------------------------------------------------------------
 ' Property : samplingInterval
 ' Author    : beededea
@@ -385,7 +395,12 @@ Public Property Let samplingInterval(ByVal newValue As String)
 
     If mSamplingInterval <> newValue Then mSamplingInterval = newValue Else Exit Property
     
-    Call obtainStorage
+    If tmrSampler.Interval = 100 Then Call tmrSampler_Timer ' allows first early run
+    
+    tmrSampler.Interval = Val(mSamplingInterval) * 1000
+    If mPointerAnimate = True Then
+        If tmrSampler.Interval = 1000 Then tmrSampler.Interval = 1200 ' take into account the animator
+    End If
     
     On Error GoTo 0
     Exit Property
@@ -615,38 +630,124 @@ W_Paint_Error:
     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure W_Paint of Class Module cwOverlay"
 End Sub
  
- 
+    
+'---------------------------------------------------------------------------------------
+' Procedure : tmrAnimator_Timer
+' Author    :
+' Date      : 30/07/2023
+' Purpose   : animate timer, once every few (40) milliseconds
+'---------------------------------------------------------------------------------------
+'
+Private Sub tmrAnimator_Timer()
+    
+    On Error GoTo tmrAnimator_Timer_Error
+    '
+    ' move the pointer using SDeg
+    '
+    animationAmount = animationAmount + animationQuanta
+
+    If animateCCW = True Then
+        If SDeg > newSDeg Then
+            SDeg = oldSDeg - animationAmount
+        Else
+            tmrAnimator.Enabled = False ' when the animation is complete then stop the animator
+            animationAmount = 0
+            Exit Sub
+        End If
+    Else
+        If SDeg < newSDeg Then
+            SDeg = oldSDeg + animationAmount
+        Else
+            tmrAnimator.Enabled = False
+            animationAmount = 0
+            Exit Sub
+        End If
+    End If
+
+    W.Parent.Refresh
+
+   On Error GoTo 0
+   Exit Sub
+
+tmrAnimator_Timer_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure tmrAnimator_Timer of Class Module cwOverlay"
+End Sub
+
 
     
 '---------------------------------------------------------------------------------------
-' Procedure : tmrClock_Timer
+' Procedure : tmrSampler_Timer
 ' Author    :
 ' Date      : 30/07/2023
 ' Purpose   :
 '---------------------------------------------------------------------------------------
 '
-Private Sub tmrClock_Timer()
+Private Sub tmrSampler_Timer()
+    Dim degDiff As Double: degDiff = 0
     
-    On Error GoTo tmrClock_Timer_Error
-    
-    tmrClock.Interval = Val(mSamplingInterval) * 1000
+    On Error GoTo tmrSampler_Timer_Error
 
-'    If mSmoothSecondHand = True Then
-
-'    Else
-        Call obtainStorage
+    If mPointerAnimate = True Then
+        If tmrAnimator.Enabled = False Then
         
-'    End If
+            ' oldSDeg stored
+            oldSDeg = SDeg
+                
+            ' obtain the new cpu amount
+            storagePercent = Storage_Usage_Percent
+            
+            'storageFree = Storage_Usage_Free
+            
+            ' calculate the new cpu amount in degrees
+            newSDeg = (storagePercent * 3) + 30
+                        
+            If oldSDeg = newSDeg Then Exit Sub
+            
+            ' calculate the difference
+            degDiff = newSDeg - oldSDeg
+            
+            ' if the result is negative animate CCW
+            If degDiff < 0 Then
+                animateCCW = True
+            Else
+                animateCCW = False
+            End If
+            
+            Select Case degDiff
+                Case Is <= 5
+                    animationDivisions = 4
+                Case Is <= 10
+                    animationDivisions = 8
+                Case Is > 10
+                    animationDivisions = 16
+                Case Is > 20
+                    animationDivisions = 24
+            End Select
+            
+            ' divide that by 24 (one second duration)
+            animationQuanta = Abs(degDiff / animationDivisions)
+            
+            tmrAnimator.Enabled = True
+            
+        End If
+    Else
+        storagePercent = Storage_Usage_Percent
+        storageFree = Storage_Usage_Free
+        SDeg = (storagePercent * 3) + 30
+    End If
     
     W.Parent.Refresh
 
    On Error GoTo 0
    Exit Sub
 
-tmrClock_Timer_Error:
+tmrSampler_Timer_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure tmrClock_Timer of Class Module cwOverlay"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure tmrSampler_Timer of Class Module cwOverlay"
 End Sub
+
+
 
 ' ----------------------------------------------------------------
 ' Procedure Name: obtainStorage
@@ -659,16 +760,13 @@ End Sub
 Private Sub obtainStorage()
 
     On Error GoTo obtainStorage_Error
-    
-    ' get the list of drives and the count
-    Call getgblDriveArray(gblDriveArray(), gblDriveCount)
 
     storagePercent = Storage_Usage_Percent
     storageFree = Storage_Usage_Free
     SDeg = (storagePercent * 3) + 30
-        
+
     W.Refresh
-    
+
     On Error GoTo 0
     Exit Sub
 
