@@ -61,6 +61,7 @@ Private mTicking As Boolean ' property Ticking
 Private mPointerAnimate As Boolean ' property PointerAnimate
 Private mLocked As Boolean ' property Locked
 Private mHidden As Boolean ' property Hidden
+Private mThisStorageDetail As String ' property storage detail for tooltips
 Private mThisDriveNo As Integer ' property thisDriveNo
 Private mThisDrive As String ' property thisDrive
 Private mThisOpacity As String ' property ThisOpacity
@@ -92,6 +93,9 @@ Private Sub Class_Initialize()
     
     Set tmrAnimator = Nothing
     Set tmrAnimator = New_c.Timer(animationInterval, False)
+    
+    If mThisDrive = "" Then mThisDrive = "C:\"
+    mThisStorageDetail = obtainStorageDetails
     
    On Error GoTo 0
    Exit Sub
@@ -191,6 +195,45 @@ Public Property Let Ticking(ByVal newValue As Boolean)
 TickingLet_Error:
 
     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property Ticking of Class Module cwOverlay"
+End Property
+'---------------------------------------------------------------------------------------
+' Property : thisStorageDetail
+' Author    : beededea
+' Date      : 17/05/2023
+' Purpose   :
+'---------------------------------------------------------------------------------------
+'
+Public Property Get thisStorageDetail() As String
+   On Error GoTo thisStorageDetailGet_Error
+   
+    mThisStorageDetail = obtainStorageDetails
+    thisStorageDetail = mThisStorageDetail
+
+   On Error GoTo 0
+   Exit Property
+
+thisStorageDetailGet_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property thisStorageDetail of Class Module cwOverlay"
+End Property
+'---------------------------------------------------------------------------------------
+' Property  : thisStorageDetail
+' Author    :
+' Date      : 09/05/2023
+' Purpose   :
+'---------------------------------------------------------------------------------------
+'
+Public Property Let thisStorageDetail(ByVal newValue As String)
+    On Error GoTo thisStorageDetailLet_Error
+
+    If mThisStorageDetail <> newValue Then mThisStorageDetail = newValue Else Exit Property
+        
+    On Error GoTo 0
+    Exit Property
+
+thisStorageDetailLet_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in Property thisStorageDetail of Class Module cwOverlay"
 End Property
 
 
@@ -775,6 +818,35 @@ obtainStorage_Error:
     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure obtainStorage, line " & Erl & "."
 
 End Sub
+
+' ----------------------------------------------------------------
+' Procedure Name: obtainStorageDetails
+' Purpose:
+' Procedure Kind: Function
+' Procedure Access: Public
+' Return Type: String
+' Author: beededea
+' Date: 21/01/2024
+' ----------------------------------------------------------------
+Private Function obtainStorageDetails() As String
+    Dim result As String: result = vbNullString
+    
+    On Error GoTo obtainStorageDetails_Error
+
+    result = result & "Drive: " & mThisDrive & ": " & CStr(Int(Storage_Usage_Free)) & "gb of free space " & CStr(Storage_Usage_Percent) & "% usage." & vbCrLf
+
+    Debug.Print result
+
+    obtainStorageDetails = result
+    
+    On Error GoTo 0
+    Exit Function
+
+obtainStorageDetails_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure obtainStorageDetails, line " & Erl & "."
+
+End Function
 ' ----------------------------------------------------------------
 ' Procedure Name: Storage_Usage_Percent
 ' Purpose:

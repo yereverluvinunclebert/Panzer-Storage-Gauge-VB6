@@ -27,23 +27,27 @@ DONE
 ' about text
 ' one page help form widened
 ' about image customised and resized
+' readme.md created and updated with new images
+' test autostart
+' initial github synch.
+
+' smooth pointer - flick/smooth - done
+' sampling interval vars - done
+' sampling interval var validation - done
+' sampling interval var reading/writing - done
 
 ' -oOo-
 
 TODO
 
+' tooltip displaying usage in % and GB free
+' when drive spawned spawn with position set as an offset to current gauge
+' spawn_1 & spawn_2 &c in the settings.ini opening stored drive type and position
+
 ' html help and images updated
 ' chm help built
 
-' initial github synch.
 
-' readme.md created and updated with new images
-' test autostart
-
-' smooth pointer - flick/smooth
-' sampling interval vars - done
-' sampling interval var validation - done
-' sampling interval var reading/writing - done
 
 ' add second monitor - wip find cable!
 

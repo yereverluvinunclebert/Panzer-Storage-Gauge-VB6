@@ -164,9 +164,9 @@ Private Sub gaugeForm_BubblingEvent(ByRef Sender As Object, ByRef EventName As S
                 If PzGEnableBalloonTooltips = "1" Then CreateToolTip gaugeForm.hwnd, "This button opens the one-page help file for this widget. There is a further detailed CHM help file available from the right-click menu that contains all the information that you need to run this widget.", _
                      TTIconInfo, widgetName & " Help Button Help", , , , True
             Case Else
-                If PzGEnableBalloonTooltips = "1" Then CreateToolTip gaugeForm.hwnd, "Right Click to open the menu and the preferences. CTRL+ Mouse scrollwheel UP/DOWN to resize. " _
-                    & vbCrLf & "You can turn off the balloon tooltips in the preferences.", _
-                    TTIconInfo, widgetName & " Configuration Help", , , , True
+                If PzGEnableBalloonTooltips = "1" Then CreateToolTip gaugeForm.hwnd, "" & overlayWidget.thisStorageDetail _
+                    & vbCrLf & "Right Click to open the menu and the preferences. CTRL+ Mouse scrollwheel UP/DOWN to resize." _
+                    , TTIconInfo, widgetName & " Information.", , , , True
         End Select
     End If
     
