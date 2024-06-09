@@ -35,13 +35,13 @@ DONE
 ' sampling interval vars - done
 ' sampling interval var validation - done
 ' sampling interval var reading/writing - done
+' tooltip displaying usage in % and GB free - done
 
 ' -oOo-
 
 TODO
 
-' tooltip displaying usage in % and GB free
-' when drive spawned spawn with position set as an offset to current gauge
+' when gauge spawned spawn with position set as an offset to current gauge
 ' spawn_1 & spawn_2 &c in the settings.ini opening stored drive type and position
 
 ' html help and images updated

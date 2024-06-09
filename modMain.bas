@@ -1000,14 +1000,16 @@ Private Sub loadExcludePathCollection()
 '        .Add Empty, "minuteshadow" 'clock-hand-minutes-shadow
 '        .Add Empty, "minutehand"   'clock-hand-minutes
         
+        .Add Empty, "greenlamp"
+        .Add Empty, "redlamp"
+        
         .Add Empty, "secondshadow" 'clock-hand-seconds-shadow
         .Add Empty, "secondhand"   'clock-hand-seconds
 
         .Add Empty, "bigreflection"     'all reflections
         .Add Empty, "windowreflection"
 
-        .Add Empty, "greenlamp"
-        .Add Empty, "redlamp"
+
 
     End With
 
