@@ -920,7 +920,12 @@ Private Function getDrivePercent(ByVal sRootDrive As String) As Long
     ' after all, we only need the final percentage...
     
     dTotalBytes = CDbl(lBytesPerSec * CDbl(lSecPerClust * (lTotalClusters / 10000)))
-                        
+    
+    If dTotalBytes = 0 Then
+        getDrivePercent = 0
+        Exit Function
+    End If
+      
     ' Get Free Disk Space
     
     Dim a As Double
