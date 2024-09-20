@@ -41,6 +41,8 @@ DONE
 
 TODO
 
+' removeable unmounted drives assigned to USB &c cause overflow errors
+
 ' when new gauge spawned using menu option
 ' check if there is a spawn_n already extant
 ' if not write settings.ini with [Software\PzStorageGauge\spawn_n]
