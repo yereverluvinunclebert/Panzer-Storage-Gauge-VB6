@@ -200,3 +200,45 @@ settingsTimer_Timer_Error:
     End With
 End Sub
 
+'---------------------------------------------------------------------------------------
+' Procedure : sleepTimer_Timer
+' Author    : beededea
+' Date      : 21/04/2021
+' Purpose   : timer that stores the last time
+' if the current time is greater than the last time stored by more than 30 seconds we can assume the system
+' has been sent to sleep, if the two are significantly different then we reorganise the dock
+'---------------------------------------------------------------------------------------
+'
+Private Sub sleepTimer_Timer()
+    Dim strTimeNow As Date: strTimeNow = #1/1/2000 12:00:00 PM#  'set a variable to compare for the NOW time
+    Dim lngSecondsGap As Long: lngSecondsGap = 0  ' set a variable for the difference in time
+    Static strTimeThen As Date
+    
+    On Error GoTo sleepTimer_Timer_Error
+
+    If strTimeThen = "00:00:00" Then strTimeThen = Now(): Exit Sub
+    sleepTimer.Enabled = False
+    
+    strTimeNow = Now()
+    
+    lngSecondsGap = DateDiff("s", strTimeThen, strTimeNow)
+    strTimeThen = Now()
+
+    If lngSecondsGap > 60 Then
+        'MsgBox "System has just woken up from a sleep" ' awoken, awake
+        fAlpha.gaugeForm.Refresh
+        'MessageBox Me.hwnd, "System has just woken up from a sleep - animatedIconsRaised =" & animatedIconsRaised, "SteamyDock Information Message", vbOKOnly
+    End If
+    
+    sleepTimer.Enabled = True
+
+    On Error GoTo 0
+    Exit Sub
+
+sleepTimer_Timer_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure sleepTimer_Timer of Form dock"
+
+End Sub
+
+
