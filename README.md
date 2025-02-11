@@ -87,6 +87,8 @@ The following is the code used to extract the drive information from the running
         getDriveFree = dFreeGig
     End Function
     
+ There are some other bits of code used for formatting the results that you will need. Just dig into the code of this desktop gauge to find the above and it will become apparent which other bits you require.
+ 
  ![panzer-storagephoto-1000](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/f7f27729-f2cc-4935-8382-34d8da8dde88)
 
  This widget can be increased in size, animation speed can be changed, 
