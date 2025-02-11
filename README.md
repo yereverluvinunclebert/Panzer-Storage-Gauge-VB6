@@ -14,6 +14,79 @@
   
 The Panzer Storage Gauge VB6  is a useful utility displaying the Storage usage of a selected drive from your system in a dieselpunk fashion on your desktop. This Widget is a moveable widget that you can move anywhere around the desktop as you require.
 
+The following is the code used to extract the drive information from the running system via the GetDiskFreeSpace API. These are the pertinent bits:
+
+    Private Declare Function GetDiskFreeSpace _
+        Lib "kernel32" _
+        Alias "GetDiskFreeSpaceA" ( _
+            ByVal lpRootPathName As String, _
+            lpSectorsPerCluster As Long, _
+            lpBytesPerSector As Long, _
+            lpNumberOfFreeClusters As Long, _
+            lpTotalNumberOfClusters As Long) _
+            As Long
+                    
+    Private storagePercent As Long
+    Private storageFree As Double
+    
+    Private Function getDrivePercent(ByVal sRootDrive As String) As Long
+        Dim lSecPerClust        As Long
+        Dim lBytesPerSec        As Long
+        Dim lFreeClusters       As Long
+        Dim lTotalClusters      As Long
+        
+        Dim dTotalBytes         As Double
+        Dim dFreeBytes          As Double
+        Dim dUsedBytes          As Double
+        Dim thePercentage       As Long
+    
+        Call GetDiskFreeSpace(sRootDrive, lSecPerClust, lBytesPerSec, lFreeClusters, lTotalClusters)
+                            
+        ' Get Total Disk Space, divided by 10000 to overcome the limitation of VB6 double var type for current and future large drives.
+        ' after all, we only need the final percentage...
+        
+        dTotalBytes = CDbl(lBytesPerSec * CDbl(lSecPerClust * (lTotalClusters / 10000)))
+        
+        If dTotalBytes = 0 Then
+            getDrivePercent = 0
+            Exit Function
+        End If
+          
+        ' Get Free Disk Space
+        
+        Dim a As Double
+        a = CDbl(lSecPerClust) * CDbl(lFreeClusters)
+        dFreeBytes = CDbl(lBytesPerSec * a / 10000)
+                                
+        ' Get Used Disk Space
+        dUsedBytes = dTotalBytes - dFreeBytes
+        
+        ' get percentage of used space
+        thePercentage = dUsedBytes / dTotalBytes * 100
+        
+        getDrivePercent = thePercentage  
+    End Function    
+    
+    Private Function getDriveFree(ByVal sRootDrive As String) As Double
+        Dim lSecPerClust        As Long
+        Dim lBytesPerSec        As Long
+        Dim lFreeClusters       As Long
+        Dim lTotalClusters      As Long
+        
+        Dim dFreeGig            As Double
+        Dim dUsedGig            As Double
+    
+        Call GetDiskFreeSpace(sRootDrive, lSecPerClust, lBytesPerSec, lFreeClusters, lTotalClusters)
+                                                    
+        ' Get Free Disk Space
+        dFreeGig = CDbl(lBytesPerSec) * CDbl(lSecPerClust) * CDbl(lFreeClusters)
+        dFreeGig = dFreeGig / 1024 ' KB
+        dFreeGig = dFreeGig / 1024 ' MB
+        dFreeGig = dFreeGig / 1024 ' GB
+                                
+        getDriveFree = dFreeGig
+    End Function
+    
  ![panzer-storagephoto-1000](https://github.com/yereverluvinunclebert/Panzer-Storage-Gauge-VB6/assets/2788342/f7f27729-f2cc-4935-8382-34d8da8dde88)
 
  This widget can be increased in size, animation speed can be changed, 
