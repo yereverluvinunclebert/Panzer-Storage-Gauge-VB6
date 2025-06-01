@@ -2226,7 +2226,7 @@ End Sub
 ' Procedure : positionPrefsMonitor
 ' Author    : beededea
 ' Date      : 06/10/2023
-' Purpose   : position the prefs on the curent monitor
+' Purpose   : position the prefs on the current monitor
 '---------------------------------------------------------------------------------------
 '
 Public Sub positionPrefsMonitor()
@@ -2265,7 +2265,7 @@ Public Sub positionPrefsMonitor()
     End If
     
     monitorCount = fGetMonitorCount
-    If monitorCount > 1 Then Call adjustFormPositionToCorrectMonitor(Me.hwnd, formLeftTwips, formTopTwips)
+    If monitorCount > 1 Then Call SetFormOnMonitor(Me.hwnd, formLeftTwips / fTwipsPerPixelX, formTopTwips / fTwipsPerPixelY)
     
     ' calculate the on-screen widget position
     If Me.Left < 0 Then
