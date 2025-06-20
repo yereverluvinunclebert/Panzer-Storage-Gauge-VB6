@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{BCE37951-37DF-4D69-A8A3-2CFABEE7B3CC}#1.0#0"; "CCRSlider.ocx"
-Begin VB.Form panzerPrefs 
+Begin VB.Form widgetPrefs 
    AutoRedraw      =   -1  'True
    Caption         =   "Panzer Storage Gauge Preferences"
    ClientHeight    =   10545
@@ -1861,7 +1861,7 @@ Begin VB.Form panzerPrefs
       End
    End
 End
-Attribute VB_Name = "panzerPrefs"
+Attribute VB_Name = "widgetPrefs"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -1871,7 +1871,7 @@ Attribute VB_Exposed = False
 ' gaugeForm_BubblingEvent ' leaving that here so I can copy/paste to find it
 
 '---------------------------------------------------------------------------------------
-' Module    : panzerPrefs
+' Module    : widgetPrefs
 ' Author    : beededea
 ' Date      : 17/08/2022
 ' Purpose   : VB6 standard form to display the prefs
@@ -2117,7 +2117,7 @@ Private Sub Form_Initialize()
 
 Form_Initialize_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Form_Initialize of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Form_Initialize of Form widgetPrefs"
     
     End Sub
 
@@ -2222,7 +2222,7 @@ Private Sub Form_Load()
 
 Form_Load_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Form_Load of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Form_Load of Form widgetPrefs"
 
 End Sub
 
@@ -2251,8 +2251,8 @@ Public Sub positionPrefsMonitor()
     End If
     
     If formLeftTwips = 0 Then
-        If ((fAlpha.gaugeForm.Left + fAlpha.gaugeForm.Width) * screenTwipsPerPixelX) + 200 + panzerPrefs.Width > screenWidthTwips Then
-            panzerPrefs.Left = (fAlpha.gaugeForm.Left * screenTwipsPerPixelX) - (panzerPrefs.Width + 200)
+        If ((fAlpha.gaugeForm.Left + fAlpha.gaugeForm.Width) * gblScreenTwipsPerPixelX) + 200 + widgetPrefs.Width > screenWidthTwips Then
+            widgetPrefs.Left = (fAlpha.gaugeForm.Left * gblScreenTwipsPerPixelX) - (widgetPrefs.Width + 200)
         End If
     End If
 
@@ -2279,11 +2279,18 @@ Public Sub positionPrefsMonitor()
     If Me.Top < 0 Then
         Me.Top = 0
     End If
-    If Me.Left > screenWidthTwips - 2500 Then
-        Me.Left = screenWidthTwips - 2500
+'    If Me.Left > screenWidthTwips - 2500 Then
+'        Me.Left = screenWidthTwips - 2500
+'    End If
+'    If Me.Top > screenHeightTwips - 2500 Then
+'        Me.Top = screenHeightTwips - 2500
+'    End If
+
+    If Me.Left > gblVirtualScreenWidthTwips - 2500 Then
+        Me.Left = gblVirtualScreenWidthTwips - 2500
     End If
-    If Me.Top > screenHeightTwips - 2500 Then
-        Me.Top = screenHeightTwips - 2500
+    If Me.Top > gblVirtualScreenHeightTwips - 2500 Then
+        Me.Top = gblVirtualScreenHeightTwips - 2500
     End If
     
     On Error GoTo 0
@@ -2291,7 +2298,7 @@ Public Sub positionPrefsMonitor()
 
 positionPrefsMonitor_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure positionPrefsMonitor of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure positionPrefsMonitor of Form widgetPrefs"
 End Sub
     
 '---------------------------------------------------------------------------------------
@@ -2312,7 +2319,7 @@ Private Sub btnResetMessages_MouseMove(Button As Integer, Shift As Integer, x As
 
 btnResetMessages_MouseMove_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnResetMessages_MouseMove of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnResetMessages_MouseMove of Form widgetPrefs"
 End Sub
 
 '---------------------------------------------------------------------------------------
@@ -2363,7 +2370,7 @@ Private Sub chkDpiAwareness_Click()
 
 chkDpiAwareness_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkDpiAwareness_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkDpiAwareness_Click of Form widgetPrefs"
 End Sub
 
 
@@ -2400,7 +2407,7 @@ Private Sub chkEnablePrefsTooltips_Click()
 
 chkEnablePrefsTooltips_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkEnablePrefsTooltips_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkEnablePrefsTooltips_Click of Form widgetPrefs"
 
 End Sub
 
@@ -2422,7 +2429,7 @@ Private Sub chkEnableTooltips_MouseMove(Button As Integer, Shift As Integer, x A
 
 chkEnableTooltips_MouseMove_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkEnableTooltips_MouseMove of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkEnableTooltips_MouseMove of Form widgetPrefs"
 End Sub
 
 '---------------------------------------------------------------------------------------
@@ -2448,7 +2455,7 @@ Private Sub chkShowTaskbar_Click()
 
 chkShowTaskbar_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkShowTaskbar_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkShowTaskbar_Click of Form widgetPrefs"
 End Sub
 
 
@@ -2478,7 +2485,7 @@ Private Sub btnResetMessages_Click()
 
 btnResetMessages_Click_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnResetMessages_Click of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnResetMessages_Click of Form widgetPrefs"
 End Sub
 
 
@@ -2503,7 +2510,7 @@ Private Sub btnAboutDebugInfo_Click()
 
 btnAboutDebugInfo_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnAboutDebugInfo_Click of form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnAboutDebugInfo_Click of form widgetPrefs"
 End Sub
 
 '---------------------------------------------------------------------------------------
@@ -2523,7 +2530,7 @@ Private Sub btnDonate_Click()
 
 btnDonate_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnDonate_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnDonate_Click of Form widgetPrefs"
 End Sub
 
 '---------------------------------------------------------------------------------------
@@ -2545,7 +2552,7 @@ Private Sub btnFacebook_Click()
 
 btnFacebook_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnFacebook_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnFacebook_Click of Form widgetPrefs"
 End Sub
 
 '---------------------------------------------------------------------------------------
@@ -2595,7 +2602,7 @@ btnOpenFile_Click_Error:
 
     With Err
          If .Number <> 0 Then
-            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnOpenFile_Click of Form panzerPrefs"
+            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnOpenFile_Click of Form widgetPrefs"
             Resume Next
           End If
     End With
@@ -2620,7 +2627,7 @@ Private Sub btnUpdate_Click()
 
 btnUpdate_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnUpdate_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnUpdate_Click of Form widgetPrefs"
 End Sub
 
 '---------------------------------------------------------------------------------------
@@ -2641,7 +2648,7 @@ Private Sub chkGaugeFunctions_Click()
 
 chkGaugeFunctions_Click_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkGaugeFunctions_Click of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkGaugeFunctions_Click of Form widgetPrefs"
 End Sub
 
 Private Sub chkGenStartup_Click()
@@ -2694,7 +2701,7 @@ btnDefaultEditor_Click_Error:
 
     With Err
          If .Number <> 0 Then
-            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnDefaultEditor_Click of Form panzerPrefs"
+            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnDefaultEditor_Click of Form widgetPrefs"
             Resume Next
           End If
     End With
@@ -2723,7 +2730,7 @@ Private Sub chkEnableBalloonTooltips_Click()
 
 chkEnableBalloonTooltips_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkEnableBalloonTooltips_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkEnableBalloonTooltips_Click of Form widgetPrefs"
 End Sub
 
 
@@ -2750,7 +2757,7 @@ Private Sub chkIgnoreMouse_Click()
 
 chkIgnoreMouse_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkIgnoreMouse_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkIgnoreMouse_Click of Form widgetPrefs"
 End Sub
 
 '---------------------------------------------------------------------------------------
@@ -2796,7 +2803,7 @@ chkPreventDragging_Click_Error:
 
     With Err
          If .Number <> 0 Then
-            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkPreventDragging_Click of Form panzerPrefs"
+            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkPreventDragging_Click of Form widgetPrefs"
             Resume Next
           End If
     End With
@@ -2839,7 +2846,7 @@ Private Sub chkWidgetHidden_Click()
 
 chkWidgetHidden_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkWidgetHidden_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkWidgetHidden_Click of Form widgetPrefs"
 
 End Sub
 
@@ -2872,7 +2879,7 @@ Private Sub cmbAspectHidden_Click()
 
 cmbAspectHidden_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure cmbAspectHidden_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure cmbAspectHidden_Click of Form widgetPrefs"
 End Sub
 
 '---------------------------------------------------------------------------------------
@@ -2912,7 +2919,7 @@ cmbDebug_Click_Error:
 
     With Err
          If .Number <> 0 Then
-            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure cmbDebug_Click of Form panzerPrefs"
+            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure cmbDebug_Click of Form widgetPrefs"
             Resume Next
           End If
     End With
@@ -2943,7 +2950,7 @@ Private Sub cmbScrollWheelDirection_Click()
 
 cmbScrollWheelDirection_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure cmbScrollWheelDirection_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure cmbScrollWheelDirection_Click of Form widgetPrefs"
 End Sub
 
 
@@ -2993,7 +3000,7 @@ cmbWidgetPosition_Click_Error:
 
     With Err
          If .Number <> 0 Then
-            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure cmbWidgetPosition_Click of Form panzerPrefs"
+            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure cmbWidgetPosition_Click of Form widgetPrefs"
             Resume Next
           End If
     End With
@@ -3030,7 +3037,7 @@ IsVisible_Error:
 
     With Err
          If .Number <> 0 Then
-            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure IsVisible of Form panzerPrefs"
+            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure IsVisible of Form widgetPrefs"
             Resume Next
           End If
     End With
@@ -3062,7 +3069,7 @@ Private Sub showLastTab()
 
 showLastTab_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure showLastTab of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure showLastTab of Form widgetPrefs"
 
 End Sub
 
@@ -3174,7 +3181,7 @@ Private Sub positionPrefsFramesButtons()
 
 positionPrefsFramesButtons_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure positionPrefsFramesButtons of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure positionPrefsFramesButtons of Form widgetPrefs"
 
 End Sub
 
@@ -3201,7 +3208,7 @@ Private Sub btnClose_Click()
 
 btnClose_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnClose_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnClose_Click of Form widgetPrefs"
 End Sub
 '
 '---------------------------------------------------------------------------------------
@@ -3226,7 +3233,7 @@ Private Sub btnHelp_Click()
 
 btnHelp_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnHelp_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnHelp_Click of Form widgetPrefs"
 End Sub
 '
 '---------------------------------------------------------------------------------------
@@ -3384,8 +3391,9 @@ Private Sub btnSave_Click()
         sPutINISetting "Software\PzStorageGauge", "debug", gblDebug, gblSettingsFile
         sPutINISetting "Software\PzStorageGauge", "dblClickCommand", gblDblClickCommand, gblSettingsFile
         sPutINISetting "Software\PzStorageGauge", "openFile", gblOpenFile, gblSettingsFile
-        sPutINISetting "Software\SteampunkClockCalendar", "defaultVB6Editor", gblDefaultVB6Editor, gblSettingsFile
-        sPutINISetting "Software\SteampunkClockCalendar", "defaultTBEditor", gblDefaultTBEditor, gblSettingsFile
+        
+        sPutINISetting "Software\PzStorageGauge", "defaultVB6Editor", gblDefaultVB6Editor, gblSettingsFile
+        sPutINISetting "Software\PzStorageGauge", "defaultTBEditor", gblDefaultTBEditor, gblSettingsFile
         
         sPutINISetting "Software\PzStorageGauge", "clockHighDpiXPos", gblClockHighDpiXPos, gblSettingsFile
         sPutINISetting "Software\PzStorageGauge", "clockHighDpiYPos", gblClockHighDpiYPos, gblSettingsFile
@@ -3420,7 +3428,7 @@ Private Sub btnSave_Click()
 
 btnSave_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnSave_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnSave_Click of Form widgetPrefs"
 
 End Sub
 
@@ -3464,7 +3472,7 @@ Private Sub chkEnableTooltips_Click()
 
 chkEnableTooltips_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkEnableTooltips_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkEnableTooltips_Click of Form widgetPrefs"
 
 End Sub
 
@@ -3516,7 +3524,7 @@ Private Sub btnPrefsFont_Click()
     fntItalics = CBool(gblPrefsFontItalics)
     fntColour = CLng(gblPrefsFontColour)
         
-    Call changeFont(panzerPrefs, True, fntFont, fntSize, fntWeight, fntStyle, fntColour, fntItalics, fntUnderline, fntFontResult)
+    Call changeFont(widgetPrefs, True, fntFont, fntSize, fntWeight, fntStyle, fntColour, fntItalics, fntUnderline, fntFontResult)
     
     gblPrefsFont = CStr(fntFont)
     gblClockFont = gblPrefsFont
@@ -3554,7 +3562,7 @@ Private Sub btnPrefsFont_Click()
 
 btnPrefsFont_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnPrefsFont_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure btnPrefsFont_Click of Form widgetPrefs"
 
 End Sub
 
@@ -3640,10 +3648,10 @@ Private Sub adjustPrefsControls()
     If gblPrefsFont <> vbNullString Then
         txtPrefsFont.Text = gblPrefsFont
         If gblDpiAwareness = "1" Then
-            Call changeFormFont(panzerPrefs, gblPrefsFont, Val(gblPrefsFontSizeHighDPI), fntWeight, fntStyle, gblPrefsFontItalics, gblPrefsFontColour)
+            Call changeFormFont(widgetPrefs, gblPrefsFont, Val(gblPrefsFontSizeHighDPI), fntWeight, fntStyle, gblPrefsFontItalics, gblPrefsFontColour)
             txtPrefsFontSize.Text = gblPrefsFontSizeHighDPI
         Else
-            Call changeFormFont(panzerPrefs, gblPrefsFont, Val(gblPrefsFontSizeLowDPI), fntWeight, fntStyle, gblPrefsFontItalics, gblPrefsFontColour)
+            Call changeFormFont(widgetPrefs, gblPrefsFont, Val(gblPrefsFontSizeLowDPI), fntWeight, fntStyle, gblPrefsFontItalics, gblPrefsFontColour)
             txtPrefsFontSize.Text = gblPrefsFontSizeLowDPI
         End If
     End If
@@ -3699,7 +3707,7 @@ Private Sub adjustPrefsControls()
 
 adjustPrefsControls_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure adjustPrefsControls of Form panzerPrefs on line " & Erl
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure adjustPrefsControls of Form widgetPrefs on line " & Erl
 
 End Sub
 '
@@ -3788,7 +3796,7 @@ populatePrefsComboBoxes_Error:
 
     With Err
          If .Number <> 0 Then
-            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure populatePrefsComboBoxes of Form panzerPrefs"
+            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure populatePrefsComboBoxes of Form widgetPrefs"
             Resume Next
           End If
     End With
@@ -3828,7 +3836,7 @@ Private Sub readFileWriteComboBox(ByRef thisComboBox As Control, ByVal thisFileN
 
 readFileWriteComboBox_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure readFileWriteComboBox of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure readFileWriteComboBox of Form widgetPrefs"
 
 End Sub
 
@@ -3878,7 +3886,7 @@ Private Sub clearBorderStyle()
 
 clearBorderStyle_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure clearBorderStyle of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure clearBorderStyle of Form widgetPrefs"
 
 End Sub
 
@@ -3933,7 +3941,7 @@ Form_Resize_Error:
 
     With Err
          If .Number <> 0 Then
-            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Form_Resize of Form panzerPrefs"
+            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Form_Resize of Form widgetPrefs"
             Resume Next
           End If
     End With
@@ -3994,7 +4002,7 @@ Private Sub tweakPrefsControlPositions(ByVal thisForm As Form, ByVal m_FormWid A
 
 tweakPrefsControlPositions_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure tweakPrefsControlPositions of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure tweakPrefsControlPositions of Form widgetPrefs"
 
 End Sub
 
@@ -4021,7 +4029,7 @@ Private Sub Form_Unload(Cancel As Integer)
 
 Form_Unload_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Form_Unload of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Form_Unload of Form widgetPrefs"
 End Sub
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
     fraScrollbarCover.Visible = True
@@ -4218,7 +4226,7 @@ Private Sub lblGitHub_dblClick()
 
 lblGitHub_dblClick_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure lblGitHub_dblClick of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure lblGitHub_dblClick of Form widgetPrefs"
 End Sub
 
 Private Sub lblGitHub_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -4278,7 +4286,7 @@ Private Sub txtAboutText_MouseDown(Button As Integer, Shift As Integer, x As Sin
 
 txtAboutText_MouseDown_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure txtAboutText_MouseDown of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure txtAboutText_MouseDown of Form widgetPrefs"
 End Sub
 
 Private Sub txtAboutText_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -4475,7 +4483,7 @@ Private Sub sliGaugeSize_Change()
 
 sliGaugeSize_Change_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure sliGaugeSize_Change of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure sliGaugeSize_Change of Form widgetPrefs"
 
 End Sub
 
@@ -4517,7 +4525,7 @@ Private Sub sliOpacity_Click()
 
 sliOpacity_Change_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure sliOpacity_Change of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure sliOpacity_Change of Form widgetPrefs"
 End Sub
 
 
@@ -4544,7 +4552,7 @@ Private Sub Form_MouseDown(ByRef Button As Integer, ByRef Shift As Integer, ByRe
 
 Form_MouseDown_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Form_MouseDown of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Form_MouseDown of Form widgetPrefs"
 End Sub
 
 'Private Sub fraEmail_MouseDown(ByRef Button As Integer, ByRef Shift As Integer, ByRef x As Single, ByRef y As Single)
@@ -4796,7 +4804,7 @@ Public Sub setPrefsTooltips()
 
 setPrefsTooltips_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure setPrefsTooltips of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure setPrefsTooltips of Form widgetPrefs"
 
 End Sub
 
@@ -4820,7 +4828,7 @@ Private Sub setPrefsLabels()
 
 setPrefsLabels_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure setPrefsLabels of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure setPrefsLabels of Form widgetPrefs"
         
 End Sub
 
@@ -4843,7 +4851,7 @@ Public Sub DestroyToolTip()
 
 DestroyToolTip_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure DestroyToolTip of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure DestroyToolTip of Form widgetPrefs"
 End Sub
 '---------------------------------------------------------------------------------------
 ' Procedure : loadPrefsAboutText
@@ -4869,7 +4877,7 @@ Private Sub loadPrefsAboutText()
 
 loadPrefsAboutText_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure loadPrefsAboutText of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure loadPrefsAboutText of Form widgetPrefs"
     
 End Sub
 
@@ -4957,7 +4965,7 @@ Private Sub picButtonMouseUpEvent(ByVal thisTabName As String, ByRef thisPicName
 
 picButtonMouseUpEvent_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure picButtonMouseUpEvent of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure picButtonMouseUpEvent of Form widgetPrefs"
 
 End Sub
 
@@ -5017,7 +5025,7 @@ End Sub
 '        frmCount = frmCount + 1
 '        If frmCount >= 500 Then
 '            frmCount = 0
-'            panzerPrefs.Refresh
+'            widgetPrefs.Refresh
 '        End If
 '    Next useloop
 '
@@ -5026,7 +5034,7 @@ End Sub
 '
 'scrollFrameDownward_Error:
 '
-'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure scrollFrameDownward of Form panzerPrefs"
+'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure scrollFrameDownward of Form widgetPrefs"
 '
 'End Sub
 
@@ -5055,7 +5063,7 @@ Private Sub themeTimer_Timer()
 
 themeTimer_Timer_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure themeTimer_Timer of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure themeTimer_Timer of Form widgetPrefs"
 
 End Sub
 
@@ -5077,7 +5085,7 @@ Private Sub mnuCoffee_Click()
     Exit Sub
 mnuCoffee_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuCoffee_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuCoffee_Click of Form widgetPrefs"
 End Sub
 
 
@@ -5101,7 +5109,7 @@ mnuLicenceA_Click_Error:
 
     With Err
          If .Number <> 0 Then
-            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuLicenceA_Click of Form panzerPrefs"
+            MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuLicenceA_Click of Form widgetPrefs"
             Resume Next
           End If
     End With
@@ -5128,7 +5136,7 @@ Private Sub mnuSupport_Click()
 
 mnuSupport_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuSupport_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuSupport_Click of Form widgetPrefs"
 End Sub
 
 
@@ -5170,7 +5178,7 @@ Private Sub mnuAuto_Click()
 
 mnuAuto_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuAuto_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuAuto_Click of Form widgetPrefs"
 End Sub
 
 '---------------------------------------------------------------------------------------
@@ -5198,7 +5206,7 @@ Private Sub mnuDark_Click()
 
 mnuDark_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuDark_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuDark_Click of Form widgetPrefs"
 End Sub
 
 '---------------------------------------------------------------------------------------
@@ -5227,7 +5235,7 @@ Private Sub mnuLight_Click()
 
 mnuLight_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuLight_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure mnuLight_Click of Form widgetPrefs"
 End Sub
 
 
@@ -5275,8 +5283,8 @@ Private Sub setThemeShade(ByVal redC As Integer, ByVal greenC As Integer, ByVal 
     End If
     
     'now change the color of the sliders.
-'    panzerPrefs.sliAnimationInterval.BackColor = RGB(redC, greenC, blueC)
-    'panzerPrefs.'sliWidgetSkew.BackColor = RGB(redC, greenC, blueC)
+'    widgetPrefs.sliAnimationInterval.BackColor = RGB(redC, greenC, blueC)
+    'widgetPrefs.'sliWidgetSkew.BackColor = RGB(redC, greenC, blueC)
     sliGaugeSize.BackColor = RGB(redC, greenC, blueC)
     sliOpacity.BackColor = RGB(redC, greenC, blueC)
     txtAboutText.BackColor = RGB(redC, greenC, blueC)
@@ -5371,7 +5379,7 @@ Private Sub adjustPrefsTheme()
 
 adjustPrefsTheme_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure adjustPrefsTheme of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure adjustPrefsTheme of Form widgetPrefs"
     
 End Sub
 
@@ -5431,7 +5439,7 @@ Private Sub loadHigherResPrefsImages()
 
 loadHigherResPrefsImages_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure loadHigherResPrefsImages of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure loadHigherResPrefsImages of Form widgetPrefs"
 End Sub
 
 
@@ -5454,7 +5462,7 @@ Private Sub positionTimer_Timer()
 
 positionTimer_Timer_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure positionTimer_Timer of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure positionTimer_Timer of Form widgetPrefs"
 
 End Sub
 
@@ -5480,7 +5488,7 @@ Private Sub chkEnableResizing_Click()
         prefsDynamicSizingFlg = False
         txtPrefsFontCurrentSize.Visible = False
         lblCurrentFontsTab.Visible = False
-        Unload panzerPrefs
+        Unload widgetPrefs
         Me.Show
         Call readPrefsPosition
         chkEnableResizing.Caption = "Enable Corner Resizing"
@@ -5493,7 +5501,7 @@ Private Sub chkEnableResizing_Click()
 
 chkEnableResizing_Click_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkEnableResizing_Click of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure chkEnableResizing_Click of Form widgetPrefs"
 
 End Sub
 
@@ -5534,7 +5542,7 @@ Private Sub setframeHeights()
     
         'If gblDpiAwareness = "1" Then
             ' save the initial positions of ALL the controls on the prefs form
-            Call SaveSizes(panzerPrefs, prefsControlPositions(), prefsCurrentWidth, prefsCurrentHeight)
+            Call SaveSizes(widgetPrefs, prefsControlPositions(), prefsCurrentWidth, prefsCurrentHeight)
         'End If
     Else
         fraGeneral.Height = 5536
@@ -5555,7 +5563,7 @@ Private Sub setframeHeights()
 
 setframeHeights_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure setframeHeights of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure setframeHeights of Form widgetPrefs"
 End Sub
 
 
@@ -5595,7 +5603,7 @@ Private Sub setPrefsIconImagesDark()
 
 setPrefsIconImagesDark_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure setPrefsIconImagesDark of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure setPrefsIconImagesDark of Form widgetPrefs"
 
 End Sub
 
@@ -5658,7 +5666,7 @@ Private Sub setPrefsIconImagesLight()
 
 setPrefsIconImagesLight_Error:
 
-    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure setPrefsIconImagesLight of Form panzerPrefs"
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure setPrefsIconImagesLight of Form widgetPrefs"
 
 End Sub
 
@@ -5704,7 +5712,7 @@ End Sub
 '
 'populateTimeZoneRegions_Error:
 '
-'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure populateTimeZoneRegions of Form panzerPrefs"
+'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure populateTimeZoneRegions of Form widgetPrefs"
 '
 'End Sub
 
@@ -5842,7 +5850,7 @@ End Sub
 '
 'fGetTimeZoneArray_Error:
 '
-'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure fGetTimeZoneArray of Form panzerPrefs"
+'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure fGetTimeZoneArray of Form widgetPrefs"
 '
 'End Function
 
@@ -5867,7 +5875,7 @@ End Sub
 '
 'IsDaylightSavingTime_Error:
 '
-'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure IsDaylightSavingTime of Form panzerPrefs"
+'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure IsDaylightSavingTime of Form widgetPrefs"
 '
 'End Function
 
@@ -5917,7 +5925,7 @@ End Sub
 '
 'GetTZBiasByName_Error:
 '
-'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure GetTZBiasByName of Form panzerPrefs"
+'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure GetTZBiasByName of Form widgetPrefs"
 '
 'End Function
 
@@ -5940,7 +5948,7 @@ End Sub
 '
 'TrimNull_Error:
 '
-'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure TrimNull of Form panzerPrefs"
+'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure TrimNull of Form widgetPrefs"
 '
 'End Function
 
@@ -5974,7 +5982,7 @@ End Sub
 '
 'OpenRegKey_Error:
 '
-'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure OpenRegKey of Form panzerPrefs"
+'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure OpenRegKey of Form widgetPrefs"
 '
 'End Function
 
@@ -6010,7 +6018,7 @@ End Sub
 '
 'IsWinNTPlus_Error:
 '
-'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure IsWinNTPlus of Form panzerPrefs"
+'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure IsWinNTPlus of Form widgetPrefs"
 '
 'End Function
 
@@ -6035,7 +6043,7 @@ Private Sub lblDragCorner_MouseDown(Button As Integer, Shift As Integer, x As Si
 
 lblDragCorner_MouseDown_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure lblDragCorner_MouseDown of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure lblDragCorner_MouseDown of Form widgetPrefs"
 
 End Sub
 
@@ -6057,7 +6065,7 @@ Private Sub lblDragCorner_MouseMove(Button As Integer, Shift As Integer, x As Si
 
 lblDragCorner_MouseMove_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure lblDragCorner_MouseMove of Form panzerPrefs"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure lblDragCorner_MouseMove of Form widgetPrefs"
    
 End Sub
 

@@ -158,7 +158,7 @@ Public Sub mainRoutine(ByVal restart As Boolean)
     Call handleUnhideMode(extractCommand)
     
     'load the preferences form but don't yet show it, speeds up access to the prefs via the menu
-    Load panzerPrefs
+    Load widgetPrefs
     'Call loadPreferenceForm
     
     ' if the parameter states re-open prefs then shows the prefs
@@ -210,8 +210,8 @@ End Sub
 '
 '   On Error GoTo loadPreferenceForm_Error
 '
-'    If panzerPrefs.IsLoaded = False Then
-'        Load panzerPrefs
+'    If widgetPrefs.IsLoaded = False Then
+'        Load widgetPrefs
 '        gblPrefsFormResizedInCode = True
 '        Call widgetPrefs.PrefsForm_Resize_Event
 '    End If
@@ -369,8 +369,8 @@ Private Sub initialiseGlobalVars()
     windowsVer = vbNullString
     
     ' vars to obtain correct screen width (to correct VB6 bug) STARTS
-    screenTwipsPerPixelX = 0
-    screenTwipsPerPixelY = 0
+    gblScreenTwipsPerPixelX = 0
+    gblScreenTwipsPerPixelY = 0
     screenWidthTwips = 0
     screenHeightTwips = 0
     screenHeightPixels = 0

@@ -463,7 +463,7 @@ Private Sub tickbutton_mouseDown(ByRef Sender As Object)
     End If
     
     sPutINISetting "Software\PzStorageGauge", "PointerAnimate", gblPointerAnimate, gblSettingsFile
-    panzerPrefs.cmbTickSwitchPref.ListIndex = Val(gblPointerAnimate)
+    widgetPrefs.cmbTickSwitchPref.ListIndex = Val(gblPointerAnimate)
    
    On Error GoTo 0
    Exit Sub
@@ -674,7 +674,7 @@ Public Sub AdjustZoom(ByVal NewZoom As Single)
 
   ' when resized from the gauge scroll up/down it needs to write it back so the size is correct when prefs opened.
   gblGaugeSize = LTrim$(Str$(NewZoom * 100))
-  If panzerPrefs.IsVisible = True Then panzerPrefs.sliGaugeSize = Val(gblGaugeSize)
+  If widgetPrefs.IsVisible = True Then widgetPrefs.sliGaugeSize = Val(gblGaugeSize)
 
     
    On Error GoTo 0
