@@ -2536,6 +2536,9 @@ Private Sub Form_Load()
     ' read the last saved position from the settings.ini
     Call readPrefsPosition
         
+    ' size and position the frames and buttons
+    Call positionPrefsFramesButtons
+      
     ' determine the frame heights in dynamic sizing or normal mode
     Call setframeHeights
     
@@ -2553,9 +2556,6 @@ Private Sub Form_Load()
     
     ' adjust the theme used by the prefs alone
     Call adjustPrefsTheme
-    
-    ' size and position the frames and buttons
-    Call positionPrefsFramesButtons
     
     ' make the last used tab appear on startup
     Call showLastTab
@@ -7215,7 +7215,7 @@ Private Sub setframeHeights()
         fraConfig.Height = 8259
         fraSounds.Height = 3985
         fraPosition.Height = 7544
-        fraFonts.Height = 4533
+        fraFonts.Height = 6282
         
         ' the lowest window controls are not displayed on a single monitor
         If gblMonitorCount > 1 Then

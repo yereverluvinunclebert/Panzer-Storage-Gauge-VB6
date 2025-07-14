@@ -44,23 +44,27 @@ TODO
 ' removeable unmounted drives assigned to USB &c cause overflow errors
 
 ' when new gauge spawned using menu option
-' check if there is a spawn_n already extant
-' if not write settings.ini with [Software\PzStorageGauge\spawn_n]
+' check if there is a spawn_n already extant in the settings.ini
+' if not present then write the same settings.ini with [Software\PzStorageGauge\spawn_n]
 ' determine new position set as an offset to current gauge for current DPI only, eg. clockHighDpiXPos=
 ' write the position into [Software\PzStorageGauge\spawn_1] for eg.
 ' spawn new widget with parameter spawn_1
 
-' if widget opened with spawn_1 parameter
+if widget opened with spawn_1 parameter
      read the [Software\PzStorageGauge\spawn_1] clockHighDpiXPos and set position
-     read the [Software\PzStorageGauge\spawn_1] currentDrive and set the drive
-    ' if none present then use the first drive as normal.
+     read the [Software\PzStorageGauge\spawn_1]currentDrive=C:\  and set the drive
+    ' if no such  entry is present then use [Software\PzStorageGauge]currentDrive=C:\ the first drive as normal.
     ' when selecting the drive to monitor, via button, then if opened with spawn parameter then read the [spawn_1] currentDrive and set accordingly.
     ' when opening prefs indicate spawn_1 in the title
     ' when opening prefs use spawn_1 state to indicate current drive selected
     ' when selecting a new drive to monitor, via prefs, then if opened with spawn parameter then read the [spawn_1] currentDrive and set accordingly.
+    ' all other settings.ini reads and writes should occur with the spawn_1 prefix.
+    
+    when the binary is run and the "run at windows start" is present the main widget should initiate the spawned items according to what it finds in the settings.ini
+    kicking off the same binary with the spawn_n parameter.
 
 ' if widget opened without spawn parameter present
-  ' when starting up, with no spawn param, checks to see if spawn_n sections exist
+  ' when starting up, with no spawn param, checks to see if spawn_n sections exist in the settings
   ' if they do exist, then spawn one widget for each
   ' no other differences required
   
